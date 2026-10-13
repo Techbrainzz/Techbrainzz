@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suraj Narayanan | DevOps & Cloud Security Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bgBase: '#16181d',
+                        bgCard: '#1e2028',
+                        bgElevated: '#262932',
+                        borderCol: '#323643',
+                        accentCyan: '#38bdf8',
+                        accentAmber: '#f59e0b',
+                        textMuted: '#9ca3af'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Fira Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #16181d;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-code {
+            font-family: 'Fira Code', monospace;
+        }
+        .blueprint-card {
+            background-color: #1e2028;
+            border: 1px solid #323643;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .blueprint-card:hover {
+            border-color: #38bdf8;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #16181d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #323643;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-bgBase text-gray-100 antialiased selection:bg-accentCyan selection:text-black">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#16181d]/90 backdrop-blur-md border-b border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded bg-[#1e2028] border border-accentCyan/40 flex items-center justify-center text-accentCyan font-mono font-bold text-sm group-hover:border-accentCyan transition-colors">
+                    SN
+                </div>
+                <div>
+                    <span class="font-mono text-sm tracking-tight text-white block">suraj.narayanan</span>
+                    <span class="text-[11px] text-textMuted font-code">&lt;DevSecOps/&gt;</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
+                <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-accentCyan transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-accentCyan transition-colors">Homelab & Projects</a>
+                <a href="#hosting" class="hover:text-accentCyan transition-colors flex items-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up text-accentCyan"></i> Hosting Guide</a>
+                <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="mailto:suraj@example.com" class="px-4 py-2 rounded bg-[#1e2028] border border-borderCol text-accentCyan hover:border-accentCyan/60 font-mono text-xs transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-envelope"></i> Get in touch
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#1e2028] border-b border-borderCol px-6 py-4 space-y-3 font-mono text-sm">
+            <a href="#about" class="block text-gray-300 hover:text-accentCyan py-1 transition-colors">About</a>
+            <a href="#experience" class="block text-gray-300 hover:text-accentCyan py-1 transition-colors">Experience</a>
+            <a href="#skills" class="block text-gray-300 hover:text-accentCyan py-1 transition-colors">Skills</a>
+            <a href="#projects" class="block text-gray-300 hover:text-accentCyan py-1 transition-colors">Homelab & Projects</a>
+            <a href="#hosting" class="block text-accentCyan py-1 transition-colors"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Hosting Guide</a>
+            <a href="#contact" class="block text-gray-300 hover:text-accentCyan py-1 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Status Indicator -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#1e2028] border border-borderCol text-accentCyan text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Systems Operational • Available for Opportunities</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight font-mono">
+                    Suraj Narayanan
+                </h1>
+
+                <p class="text-lg sm:text-xl text-accentCyan font-mono font-medium">
+                    DevOps & Cloud Security Engineer
+                </p>
+
+                <p class="text-textMuted text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Engineering secure multi-cloud infrastructure, automated compliance validation, and robust container orchestration. Based in India with enterprise experience at <strong class="text-white">TransUnion</strong> and Google Cloud Certified Associate Cloud Engineer certification.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="px-5 py-2.5 rounded bg-accentCyan text-black font-mono text-sm font-bold hover:bg-sky-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-terminal"></i> Explore Architecture
+                    </a>
+                    <a href="#hosting" class="px-5 py-2.5 rounded bg-[#1e2028] border border-borderCol text-gray-300 font-mono text-sm hover:border-accentCyan transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up text-accentCyan"></i> Free Hosting Guide
+                    </a>
+                    <a href="https://github.com" target="_blank" class="px-5 py-2.5 rounded bg-[#1e2028] border border-borderCol text-gray-300 font-mono text-sm hover:border-accentCyan transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-github"></i> GitHub Profile
+                    </a>
+                </div>
+
+                <div class="pt-4 flex items-center space-x-6 text-textMuted text-sm font-mono">
+                    <a href="https://github.com" target="_blank" class="hover:text-accentCyan transition-colors"><i class="fa-brands fa-github mr-1.5"></i> GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-accentCyan transition-colors"><i class="fa-brands fa-linkedin-in mr-1.5"></i> LinkedIn</a>
+                    <a href="https://medium.com" target="_blank" class="hover:text-accentCyan transition-colors"><i class="fa-brands fa-medium mr-1.5"></i> Artifex Labs</a>
+                </div>
+            </div>
+
+            <!-- Terminal Hero Graphic -->
+            <div class="lg:col-span-5">
+                <div class="blueprint-card rounded-lg overflow-hidden shadow-2xl">
+                    <div class="bg-[#191b22] px-4 py-3 border-b border-borderCol flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+                        </div>
+                        <span class="text-xs font-mono text-textMuted">suraj@skanda-node01:~</span>
+                        <div class="text-[10px] text-textMuted font-mono">bash</div>
+                    </div>
+                    <div class="p-5 font-code text-xs space-y-2.5 text-gray-300">
+                        <div class="flex items-start gap-2">
+                            <span class="text-accentCyan">$</span>
+                            <span>gcloud compute instances list --format="table(name,zone,status)"</span>
+                        </div>
+                        <div class="text-textMuted pl-3 space-y-1">
+                            <p>NAME              ZONE          STATUS</p>
+                            <p class="text-emerald-400">transunion-prod   asia-south1-a RUNNING</p>
+                            <p class="text-emerald-400">skanda-proxmox    local-dc      RUNNING</p>
+                        </div>
+                        <div class="flex items-start gap-2 pt-1">
+                            <span class="text-accentCyan">$</span>
+                            <span>terraform apply -auto-approve</span>
+                        </div>
+                        <div class="text-emerald-400 pl-3">
+                            Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+                        </div>
+                        <div class="flex items-start gap-2 pt-1">
+                            <span class="text-accentCyan">$</span>
+                            <span class="animate-pulse text-accentCyan">█</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#1a1c24]/50 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Profile Overview</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Infrastructure Reliability & Security</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-7 space-y-4 text-textMuted leading-relaxed text-sm sm:text-base">
+                    <p>
+                        I am a DevOps and Cloud Security Engineer based in India, specializing in building fault-tolerant cloud architectures, automated CI/CD deployment pipelines, and rigorous zero-trust security postures.
+                    </p>
+                    <p>
+                        With professional enterprise experience at <strong class="text-white">TransUnion</strong> spanning security automation, Python engineering, and cloud compliance, I design automated vulnerability assessment workflows and secure artifact delivery pipelines. I am a certified <strong class="text-accentCyan">Google Cloud Associate Cloud Engineer</strong>.
+                    </p>
+                    <p>
+                        Outside of enterprise workflows, I operate <strong class="text-white">"Skanda"</strong>—a self-hosted Proxmox homelab environment—and publish technical write-ups and automation scripts under <strong class="text-white">Artifex Labs</strong>.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 space-y-4 font-mono text-xs">
+                    <div class="blueprint-card p-4 rounded">
+                        <div class="text-accentCyan font-bold mb-1">CORE FOCUS AREAS</div>
+                        <div class="text-textMuted">CI/CD Automation, Kubernetes Orchestration, Terraform IaC, IAM Least Privilege, Vulnerability Management.</div>
+                    </div>
+                    <div class="blueprint-card p-4 rounded">
+                        <div class="text-emerald-400 font-bold mb-1">CERTIFICATIONS</div>
+                        <div class="text-textMuted">Google Cloud Certified Associate Cloud Engineer (GCP)</div>
+                    </div>
+                    <div class="blueprint-card p-4 rounded">
+                        <div class="text-purple-400 font-bold mb-1">INNOVATION & TELEMETRY</div>
+                        <div class="text-textMuted">Atal Innovation Mission (3e-STECHULIKA Solar Telemetry Project)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section id="experience" class="py-20 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Career & Milestones</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Professional Experience</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- TransUnion Experience -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="blueprint-card p-6 rounded-lg relative">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <h3 class="text-base sm:text-lg font-bold text-white font-mono">DevOps & Cloud Security Engineer</h3>
+                            <span class="px-2.5 py-1 rounded bg-[#16181d] text-accentCyan font-mono text-xs border border-borderCol">TransUnion</span>
+                        </div>
+                        <p class="text-xs text-textMuted font-mono mb-4">Enterprise Cloud Security & Compliance Automation</p>
+                        <p class="text-textMuted text-sm leading-relaxed mb-4">
+                            Leading cloud security posture management, developing automated vulnerability validation scripts, and establishing secure infrastructure-as-code guidelines across multi-cloud environments.
+                        </p>
+                        <ul class="space-y-2 text-xs sm:text-sm text-textMuted font-mono">
+                            <li class="flex items-start gap-2"><span class="text-accentCyan">></span> Engineered Python automation tools to streamline vulnerability patching audits.</li>
+                            <li class="flex items-start gap-2"><span class="text-accentCyan">></span> Administered Jenkins and Harness CI/CD pipelines for zero-downtime microservice releases.</li>
+                            <li class="flex items-start gap-2"><span class="text-accentCyan">></span> Enforced stringent container image scanning and IAM least-privilege guardrails.</li>
+                        </ul>
+                    </div>
+
+                    <div class="blueprint-card p-6 rounded-lg">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <h3 class="text-base sm:text-lg font-bold text-white font-mono">Information Security & Python Automation Intern</h3>
+                            <span class="px-2.5 py-1 rounded bg-[#16181d] text-emerald-400 font-mono text-xs border border-borderCol">TransUnion</span>
+                        </div>
+                        <p class="text-xs text-textMuted font-mono mb-3">Security Ops & Scripting</p>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            Built internal Python scripts for security log aggregation, baseline compliance checks, and automated artifact validation across staging clusters.
+                        </p>
+                    </div>
+
+                    <div class="blueprint-card p-6 rounded-lg">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <h3 class="text-base sm:text-lg font-bold text-white font-mono">Cloud Systems & DevOps Intern</h3>
+                            <span class="px-2.5 py-1 rounded bg-[#16181d] text-purple-400 font-mono text-xs border border-borderCol">TransUnion</span>
+                        </div>
+                        <p class="text-xs text-textMuted font-mono mb-3">Linux Administration & Infrastructure</p>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            Assisted platform engineers in maintaining Linux host stability, automating server provisioning with bash scripts, and configuring monitoring alerts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Foundation & Education -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="blueprint-card p-6 rounded-lg">
+                        <span class="text-xs font-mono text-accentCyan">ACADEMIC FOUNDATION</span>
+                        <h3 class="text-base font-bold text-white font-mono mt-1 mb-2">Bhavan's Vidya Mandir, Girinagar</h3>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            Completed high school foundation with a strong emphasis on analytical mathematics, computer science, and engineering principles.
+                        </p>
+                    </div>
+
+                    <div class="blueprint-card p-6 rounded-lg">
+                        <span class="text-xs font-mono text-emerald-400">ATAL INNOVATION MISSION</span>
+                        <h3 class="text-base font-bold text-white font-mono mt-1 mb-2">3e-STECHULIKA Solar Project</h3>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            Developed an IoT-enabled solar tracking and telemetry monitoring system designed to optimize green energy capture efficiency and remote power reporting.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Tech Stack & Skills Section -->
+    <section id="skills" class="py-20 bg-[#1a1c24]/50 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Technical Competencies</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Core Tech Stack & Skills</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Cloud & Infrastructure -->
+                <div class="blueprint-card p-5 rounded-lg space-y-3">
+                    <div class="text-accentCyan font-mono text-xs font-bold"><i class="fa-solid fa-cloud mr-1.5"></i> CLOUD & INFRASTRUCTURE</div>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Google Cloud (GCP)</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">AWS</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Terraform</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Docker</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Kubernetes</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Proxmox VE</span>
+                    </div>
+                </div>
+
+                <!-- CI/CD & Automation -->
+                <div class="blueprint-card p-5 rounded-lg space-y-3">
+                    <div class="text-emerald-400 font-mono text-xs font-bold"><i class="fa-solid fa-gears mr-1.5"></i> CI/CD & AUTOMATION</div>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Jenkins</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Harness</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Ansible</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Semaphore UI</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <!-- Security & Networking -->
+                <div class="blueprint-card p-5 rounded-lg space-y-3">
+                    <div class="text-blue-400 font-mono text-xs font-bold"><i class="fa-solid fa-shield-halved mr-1.5"></i> SECURITY & NETWORKING</div>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Keycloak SSO</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">AdGuard Home</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Nginx Proxy Mgr+</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">IAM & RBAC</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Trivy / Snyk</span>
+                    </div>
+                </div>
+
+                <!-- Languages & Scripting -->
+                <div class="blueprint-card p-5 rounded-lg space-y-3">
+                    <div class="text-purple-400 font-mono text-xs font-bold"><i class="fa-solid fa-code mr-1.5"></i> LANGUAGES & SCRIPTING</div>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Python</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Bash / Shell</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">SQL</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">YAML / JSON</span>
+                        <span class="px-2 py-1 rounded bg-[#16181d] text-textMuted font-code text-xs border border-borderCol">Markdown</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects & Architecture Section -->
+    <section id="projects" class="py-20 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Hands-on Labs & Architecture</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Featured Projects & Architecture</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Skanda Homelab -->
+                <div class="blueprint-card p-6 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-accentCyan">HOMELAB ARCHITECTURE</span>
+                            <i class="fa-solid fa-server text-accentCyan"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-mono mb-2">"Skanda" Proxmox Homelab</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-4">
+                            Self-hosted enterprise virtualization stack running on a Dell Inspiron laptop powered by Proxmox VE. Features OpenMediaVault network-attached storage pooling, Keycloak single sign-on authentication, AdGuard Home DNS sinkhole, Nginx Proxy Manager Plus, and Semaphore UI for automated playbook execution.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Proxmox VE</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Keycloak SSO</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">OpenMediaVault</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="text-xs font-mono text-accentCyan hover:underline flex items-center gap-1.5">
+                        View Repository <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Artifex Labs -->
+                <div class="blueprint-card p-6 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-emerald-400">TECHNICAL PUBLICATIONS</span>
+                            <i class="fa-solid fa-book-open text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-mono mb-2">Artifex Labs Organization</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-4">
+                            Curated technical publications, open-source automation scripts, and comprehensive architectural blueprints focusing on zero-trust cloud security, container hardening, and robust CI/CD workflow design.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Markdown</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Bash Scripts</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Architecture</span>
+                        </div>
+                    </div>
+                    <a href="https://medium.com" target="_blank" class="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1.5">
+                        Read Articles <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- 3e-STECHULIKA -->
+                <div class="blueprint-card p-6 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-blue-400">IOT & TELEMETRY</span>
+                            <i class="fa-solid fa-solar-panel text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white font-mono mb-2">3e-STECHULIKA Solar System</h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-4">
+                            IoT-enabled solar tracking and energy generation telemetry system developed under the Atal Innovation Mission. Features real-time sensor metrics, automated sun tracking, and remote power reporting dashboards.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Python</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">IoT Sensors</span>
+                            <span class="text-[11px] font-code px-2 py-0.5 rounded bg-[#16181d] text-gray-300">Grafana</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com" target="_blank" class="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1.5">
+                        View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Hosting & Deployment Guide Section -->
+    <section id="hosting" class="py-20 bg-[#1a1c24]/50 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Deployment Guide</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Free Portfolio Hosting on GitHub Pages</h2>
+                <p class="text-textMuted text-sm mt-2">Since this portfolio is built as a single, lightweight static HTML file, you can host it 100% free with automatic SSL and custom domains on GitHub Pages.</p>
+            </div>
+
+            <!-- Step-by-Step Instructions -->
+            <div class="blueprint-card p-6 sm:p-8 rounded-lg max-w-4xl mx-auto space-y-6">
+                <div class="flex items-center justify-between border-b border-borderCol pb-4">
+                    <h3 class="text-base font-bold text-white font-mono"><i class="fa-solid fa-terminal text-accentCyan mr-2"></i> Quick CLI Deployment Commands</h3>
+                    <button onclick="copyCommands()" class="px-3 py-1.5 rounded bg-[#16181d] border border-borderCol text-accentCyan text-xs font-mono hover:border-accentCyan transition-colors flex items-center gap-1.5">
+                        <i class="fa-regular fa-copy"></i> Copy Commands
+                    </button>
+                </div>
+
+                <div id="command-box" class="bg-[#16181d] p-4 rounded border border-borderCol font-code text-xs text-gray-300 space-y-2 overflow-x-auto">
+                    <p class="text-textMuted"># 1. Initialize git in your portfolio folder</p>
+                    <p>git init</p>
+                    <p class="text-textMuted pt-2"># 2. Add your index.html file</p>
+                    <p>git add index.html</p>
+                    <p>git commit -m "feat: initial release of professional portfolio"</p>
+                    <p class="text-textMuted pt-2"># 3. Connect to your GitHub repository (replace with your repo URL)</p>
+                    <p>git branch -M main</p>
+                    <p>git remote add origin https://github.com/surajnarayanan/surajnarayanan.github.io.git</p>
+                    <p class="text-textMuted pt-2"># 4. Push to GitHub</p>
+                    <p>git push -u origin main</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-xs font-mono">
+                    <div class="bg-[#16181d] p-4 rounded border border-borderCol">
+                        <div class="text-accentCyan font-bold mb-1">STEP 01</div>
+                        <div class="text-textMuted">Create a public repository named <code class="text-white">username.github.io</code> on GitHub.</div>
+                    </div>
+                    <div class="bg-[#16181d] p-4 rounded border border-borderCol">
+                        <div class="text-accentCyan font-bold mb-1">STEP 02</div>
+                        <div class="text-textMuted">Save this code locally as <code class="text-white">index.html</code> and push via Git.</div>
+                    </div>
+                    <div class="bg-[#16181d] p-4 rounded border border-borderCol">
+                        <div class="text-accentCyan font-bold mb-1">STEP 03</div>
+                        <div class="text-textMuted">Go to repo Settings > Pages, ensure branch is <code class="text-white">main</code> / root.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 border-t border-borderCol">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-12">
+                <span class="text-xs font-mono text-accentCyan uppercase tracking-widest">// Communications</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 font-mono">Get In Touch</h2>
+                <p class="text-textMuted text-sm mt-2">Have an engineering opportunity or want to discuss DevOps architecture? Drop a message below.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="blueprint-card p-6 rounded-lg space-y-4 text-sm font-mono">
+                        <div class="flex items-center space-x-3 text-textMuted">
+                            <i class="fa-solid fa-envelope text-accentCyan"></i>
+                            <a href="mailto:suraj@example.com" class="text-white hover:text-accentCyan transition-colors">suraj@example.com</a>
+                        </div>
+                        <div class="flex items-center space-x-3 text-textMuted">
+                            <i class="fa-solid fa-location-dot text-emerald-400"></i>
+                            <span class="text-white">India (Remote / On-Site)</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-textMuted">
+                            <i class="fa-solid fa-shield-halved text-blue-400"></i>
+                            <span class="text-emerald-400">Open to Opportunities</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="blueprint-card p-6 sm:p-8 rounded-lg space-y-4" onsubmit="handleFormSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono text-textMuted block">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-[#16181d] border border-borderCol rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-accentCyan transition-colors font-mono">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono text-textMuted block">Your Email</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full bg-[#16181d] border border-borderCol rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-accentCyan transition-colors font-mono">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono text-textMuted block">Subject</label>
+                            <input type="text" required placeholder="DevOps Engineering Role" class="w-full bg-[#16181d] border border-borderCol rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-accentCyan transition-colors font-mono">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono text-textMuted block">Message</label>
+                            <textarea rows="4" required placeholder="Hello Suraj..." class="w-full bg-[#16181d] border border-borderCol rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-accentCyan transition-colors font-mono"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded bg-accentCyan text-black font-mono text-sm font-bold hover:bg-sky-400 transition-colors">
+                            Send Message
+                        </button>
+                        
+                        <div id="form-success" class="hidden text-center text-emerald-400 text-xs font-mono pt-2">
+                            ✓ Message transmitted successfully.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-[#191b22] border-t border-borderCol text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+            <span class="font-mono text-xs text-white">suraj.narayanan</span>
+            <div class="flex items-center justify-center space-x-6 text-textMuted text-xs font-mono">
+                <a href="https://github.com" target="_blank" class="hover:text-accentCyan transition-colors">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-accentCyan transition-colors">LinkedIn</a>
+                <a href="https://medium.com" target="_blank" class="hover:text-accentCyan transition-colors">Artifex Labs</a>
+            </div>
+            <p class="text-xs text-textMuted font-mono">
+                &copy; 2026 Suraj Narayanan. Enterprise Slate-Grey Architecture.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu & Interactivity -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function copyCommands() {
+            const commands = `git init
+git add index.html
+git commit -m "feat: initial release of professional portfolio"
+git branch -M main
+git remote add origin https://github.com/surajnarayanan/surajnarayanan.github.io.git
+git push -u origin main`;
+            
+            // Fallback clipboard command
+            const textarea = document.createElement('textarea');
+            textarea.value = commands;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('Git deployment commands copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successMsg = document.getElementById('form-success');
+            successMsg.classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
